@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --amber: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+.mono {
+  font-family: "DM Mono", monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+/* ─── RTL / Urdu overrides ─────────────────────────────────────────────────── */
+
+[dir="rtl"] body {
+  font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+  text-align: right;
+}
+
+[dir="rtl"] label {
+  text-align: right;
+}
+
+[dir="rtl"] table th,
+[dir="rtl"] table td {
+  text-align: right;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Slider panel: slides from the left in RTL */
+[dir="rtl"] .slider-panel {
+  right: auto !important;
+  left: 0 !important;
+  border-left: none !important;
+  border-right: 1px solid #e5e5e5 !important;
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .slider-panel.slider-open {
+  transform: translateX(0);
+}
+
+/* Language switcher: mirror to left side in RTL */
+[dir="rtl"] .language-switcher-wrap {
+  direction: ltr; /* keep buttons in LTR order always */
+}
+
+/* ─── Slider animation ──────────────────────────────────────────────────────── */
+.slider-enter {
+  transform: translateX(100%);
+}
+.slider-enter-active {
+  transform: translateX(0);
+  transition: transform 250ms ease-out;
+}
+.slider-exit {
+  transform: translateX(0);
+}
+.slider-exit-active {
+  transform: translateX(100%);
+  transition: transform 250ms ease-in;
+}
